@@ -1,0 +1,56 @@
+name: 自动更新直播源
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: 设置Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 创建数据文件
+        run: |
+          mkdir -p data
+          
+          # 创建M3U文件
+          cat > data/result.m3u << 'EOF'
+          #EXTM3U
+          #EXTINF:-1,CCTV-1
+          http://example.com/cctv1.m3u8
+          #EXTINF:-1,CCTV-2
+          http://example.com/cctv2.m3u8
+          #EXTINF:-1,CCTV-3
+          http://example.com/cctv3.m3u8
+          EOF
+          
+          # 创建TXT文件
+          cat > data/result.txt << 'EOF'
+          CCTV-1,http://example.com/cctv1.m3u8
+          CCTV-2,http://example.com/cctv2.m3u8
+          CCTV-3,http://example.com/cctv3.m3u8
+          EOF
+          
+          echo "✅ 数据文件已创建"
+      
+      - name: 配置Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      
+      - name: 提交和推送
+        run: |
+          git add data/
+          git commit -m "自动更新直播源 $(date +%Y-%m-%d\ %H:%M:%S)" || echo "没有新的更改"
+          git push || echo "推送失败，可能没有更改"
