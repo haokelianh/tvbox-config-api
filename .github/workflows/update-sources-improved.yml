@@ -1,0 +1,139 @@
+name: 自动更新直播源
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/update-sources.yml'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 创建data目录
+        run: |
+          mkdir -p data
+          echo "✅ 目录已创建"
+      
+      - name: 生成M3U文件
+        run: |
+          cat > data/result.m3u << 'MEOF'
+          #EXTM3U
+          #EXTINF:-1,CCTV-1 综合
+          http://example.com/cctv1.m3u8
+          #EXTINF:-1,CCTV-2 财经
+          http://example.com/cctv2.m3u8
+          #EXTINF:-1,CCTV-3 综艺
+          http://example.com/cctv3.m3u8
+          #EXTINF:-1,CCTV-4 国际
+          http://example.com/cctv4.m3u8
+          #EXTINF:-1,CCTV-5+ 体育
+          http://example.com/cctv5.m3u8
+          #EXTINF:-1,CCTV-6 电影
+          http://example.com/cctv6.m3u8
+          #EXTINF:-1,CCTV-7 国防军事
+          http://example.com/cctv7.m3u8
+          #EXTINF:-1,CCTV-8 电视剧
+          http://example.com/cctv8.m3u8
+          #EXTINF:-1,CCTV-9 纪录
+          http://example.com/cctv9.m3u8
+          #EXTINF:-1,CCTV-10 科教
+          http://example.com/cctv10.m3u8
+          #EXTINF:-1,CCTV-11 戏曲
+          http://example.com/cctv11.m3u8
+          #EXTINF:-1,CCTV-12 社会与法
+          http://example.com/cctv12.m3u8
+          #EXTINF:-1,CCTV-13 新闻
+          http://example.com/cctv13.m3u8
+          #EXTINF:-1,CCTV-14 少儿
+          http://example.com/cctv14.m3u8
+          #EXTINF:-1,CCTV-15 音乐
+          http://example.com/cctv15.m3u8
+          MEOF
+          echo "✅ M3U文件已生成"
+          wc -l data/result.m3u
+      
+      - name: 生成TXT文件
+        run: |
+          cat > data/result.txt << 'TEOF'
+          CCTV-1 综合,http://example.com/cctv1.m3u8
+          CCTV-2 财经,http://example.com/cctv2.m3u8
+          CCTV-3 综艺,http://example.com/cctv3.m3u8
+          CCTV-4 国际,http://example.com/cctv4.m3u8
+          CCTV-5+ 体育,http://example.com/cctv5.m3u8
+          CCTV-6 电影,http://example.com/cctv6.m3u8
+          CCTV-7 国防军事,http://example.com/cctv7.m3u8
+          CCTV-8 电视剧,http://example.com/cctv8.m3u8
+          CCTV-9 纪录,http://example.com/cctv9.m3u8
+          CCTV-10 科教,http://example.com/cctv10.m3u8
+          CCTV-11 戏曲,http://example.com/cctv11.m3u8
+          CCTV-12 社会与法,http://example.com/cctv12.m3u8
+          CCTV-13 新闻,http://example.com/cctv13.m3u8
+          CCTV-14 少儿,http://example.com/cctv14.m3u8
+          CCTV-15 音乐,http://example.com/cctv15.m3u8
+          TEOF
+          echo "✅ TXT文件已生成"
+          wc -l data/result.txt
+      
+      - name: 生成JSON文件
+        run: |
+          cat > data/sources.json << 'JEOF'
+          {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "channels": [
+              {"name": "CCTV-1 综合", "url": "http://example.com/cctv1.m3u8"},
+              {"name": "CCTV-2 财经", "url": "http://example.com/cctv2.m3u8"},
+              {"name": "CCTV-3 综艺", "url": "http://example.com/cctv3.m3u8"},
+              {"name": "CCTV-4 国际", "url": "http://example.com/cctv4.m3u8"},
+              {"name": "CCTV-5+ 体育", "url": "http://example.com/cctv5.m3u8"},
+              {"name": "CCTV-6 电影", "url": "http://example.com/cctv6.m3u8"},
+              {"name": "CCTV-7 国防军事", "url": "http://example.com/cctv7.m3u8"},
+              {"name": "CCTV-8 电视剧", "url": "http://example.com/cctv8.m3u8"}
+            ]
+          }
+          JEOF
+          echo "✅ JSON文件已生成"
+      
+      - name: 检查文件
+        run: |
+          echo "📁 文件列表："
+          ls -lh data/
+          echo ""
+          echo "📝 M3U文件内容（前5行）："
+          head -5 data/result.m3u
+      
+      - name: 配置Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      
+      - name: 提交变更
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add data/
+            git commit -m "🔄 自动更新直播源 - $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+            echo "✅ 推送成功"
+          else
+            echo "ℹ️ 没有新的更改"
+          fi
+      
+      - name: 验证文件
+        run: |
+          echo "✅ 工作流完成！"
+          echo "📊 文件统计："
+          echo "  M3U文件: $(wc -l < data/result.m3u) 行"
+          echo "  TXT文件: $(wc -l < data/result.txt) 行"
+          echo "📄 文件已保存在 data/ 目录"
