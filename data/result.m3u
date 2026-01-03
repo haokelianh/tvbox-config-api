@@ -1,95 +1,63 @@
 #EXTM3U
 #EXTINF:-1,CCTV-1 综合
-https://live.fanmingming.com/tv/cctv1.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225618/index.m3u8
 #EXTINF:-1,CCTV-2 财经
-https://live.fanmingming.com/tv/cctv2.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225619/index.m3u8
 #EXTINF:-1,CCTV-3 综艺
-https://live.fanmingming.com/tv/cctv3.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225620/index.m3u8
 #EXTINF:-1,CCTV-4 国际
-https://live.fanmingming.com/tv/cctv4.m3u8
-#EXTINF:-1,CCTV-5 体育
-https://live.fanmingming.com/tv/cctv5.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225621/index.m3u8
+#EXTINF:-1,CCTV-5+ 体育
+http://39.135.55.105:6610/PLTV/88888910/224/3221225622/index.m3u8
 #EXTINF:-1,CCTV-6 电影
-https://live.fanmingming.com/tv/cctv6.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225623/index.m3u8
 #EXTINF:-1,CCTV-7 国防军事
-https://live.fanmingming.com/tv/cctv7.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225624/index.m3u8
 #EXTINF:-1,CCTV-8 电视剧
-https://live.fanmingming.com/tv/cctv8.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225625/index.m3u8
 #EXTINF:-1,CCTV-9 纪录
-https://live.fanmingming.com/tv/cctv9.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225626/index.m3u8
 #EXTINF:-1,CCTV-10 科教
-https://live.fanmingming.com/tv/cctv10.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225627/index.m3u8
 #EXTINF:-1,CCTV-11 戏曲
-https://live.fanmingming.com/tv/cctv11.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225628/index.m3u8
 #EXTINF:-1,CCTV-12 社会与法
-https://live.fanmingming.com/tv/cctv12.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225629/index.m3u8
 #EXTINF:-1,CCTV-13 新闻
-https://live.fanmingming.com/tv/cctv13.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225630/index.m3u8
 #EXTINF:-1,CCTV-14 少儿
-https://live.fanmingming.com/tv/cctv14.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225631/index.m3u8
 #EXTINF:-1,CCTV-15 音乐
-https://live.fanmingming.com/tv/cctv15.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225632/index.m3u8
 #EXTINF:-1,浙江卫视
-https://live.fanmingming.com/tv/zhejiang.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225814/index.m3u8
 #EXTINF:-1,江苏卫视
-https://live.fanmingming.com/tv/jiangsu.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225815/index.m3u8
 #EXTINF:-1,湖南卫视
-https://live.fanmingming.com/tv/hunan.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225816/index.m3u8
 #EXTINF:-1,北京卫视
-https://live.fanmingming.com/tv/beijing.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225817/index.m3u8
 #EXTINF:-1,山东卫视
-https://live.fanmingming.com/tv/shandong.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225818/index.m3u8
 #EXTINF:-1,深圳卫视
-https://live.fanmingming.com/tv/shenzhen.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225819/index.m3u8
 #EXTINF:-1,东方卫视
-https://live.fanmingming.com/tv/dongfang.m3u8
-#EXTINF:-1,辽宁卫视
-https://live.fanmingming.com/tv/liaoning.m3u8
-#EXTINF:-1,黑龙江卫视
-https://live.fanmingming.com/tv/heilongjiang.m3u8
-#EXTINF:-1,吉林卫视
-https://live.fanmingming.com/tv/jilin.m3u8
-#EXTINF:-1,四川卫视
-https://live.fanmingming.com/tv/sichuan.m3u8
-#EXTINF:-1,江西卫视
-https://live.fanmingming.com/tv/jiangxi.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225820/index.m3u8
 #EXTINF:-1,安徽卫视
-https://live.fanmingming.com/tv/anhui.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225821/index.m3u8
+#EXTINF:-1,辽宁卫视
+http://39.135.55.105:6610/PLTV/88888910/224/3221225822/index.m3u8
+#EXTINF:-1,黑龙江卫视
+http://39.135.55.105:6610/PLTV/88888910/224/3221225823/index.m3u8
+#EXTINF:-1,吉林卫视
+http://39.135.55.105:6610/PLTV/88888910/224/3221225824/index.m3u8
+#EXTINF:-1,四川卫视
+http://39.135.55.105:6610/PLTV/88888910/224/3221225825/index.m3u8
+#EXTINF:-1,江西卫视
+http://39.135.55.105:6610/PLTV/88888910/224/3221225826/index.m3u8
 #EXTINF:-1,天津卫视
-https://live.fanmingming.com/tv/tianjin.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225827/index.m3u8
 #EXTINF:-1,重庆卫视
-https://live.fanmingming.com/tv/chongqing.m3u8
-#EXTINF:-1,山西卫视
-https://live.fanmingming.com/tv/shanxi.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225828/index.m3u8
 #EXTINF:-1,河南卫视
-https://live.fanmingming.com/tv/henan.m3u8
-#EXTINF:-1,河北卫视
-https://live.fanmingming.com/tv/hebei.m3u8
-#EXTINF:-1,内蒙卫视
-https://live.fanmingming.com/tv/neimeng.m3u8
-#EXTINF:-1,广东卫视
-https://live.fanmingming.com/tv/guangdong.m3u8
-#EXTINF:-1,广西卫视
-https://live.fanmingming.com/tv/guangxi.m3u8
-#EXTINF:-1,云南卫视
-https://live.fanmingming.com/tv/yunnan.m3u8
-#EXTINF:-1,贵州卫视
-https://live.fanmingming.com/tv/guizhou.m3u8
-#EXTINF:-1,青海卫视
-https://live.fanmingming.com/tv/qinghai.m3u8
-#EXTINF:-1,宁夏卫视
-https://live.fanmingming.com/tv/ningxia.m3u8
-#EXTINF:-1,甘肃卫视
-https://live.fanmingming.com/tv/gansu.m3u8
-#EXTINF:-1,新疆卫视
-https://live.fanmingming.com/tv/xinjiang.m3u8
-#EXTINF:-1,西藏卫视
-https://live.fanmingming.com/tv/xizang.m3u8
-#EXTINF:-1,海南卫视
-https://live.fanmingming.com/tv/hainan.m3u8
-#EXTINF:-1,福建卫视
-https://live.fanmingming.com/tv/fujian.m3u8
-#EXTINF:-1,湖北卫视
-https://live.fanmingming.com/tv/hubei.m3u8
-#EXTINF:-1,陕西卫视
-https://live.fanmingming.com/tv/shaanxi.m3u8
+http://39.135.55.105:6610/PLTV/88888910/224/3221225829/index.m3u8
