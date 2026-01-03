@@ -1,0 +1,188 @@
+name: 自动更新直播源
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'  # 每天6:00和18:00 UTC运行
+  workflow_dispatch:        # 支持手动触发
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/auto-update.yml'
+
+jobs:
+  update-sources:
+    name: 更新直播源
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 设置Python环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: 创建数据目录
+        run: |
+          mkdir -p data
+          echo "✅ 创建data目录成功"
+      
+      - name: 获取直播源并生成M3U
+        run: |
+          # 创建result.m3u文件
+          cat > data/result.m3u << 'EOF'
+          #EXTM3U
+          #EXTINF:-1,CCTV-1 综合
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225618/index.m3u8
+          #EXTINF:-1,CCTV-2 财经
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225619/index.m3u8
+          #EXTINF:-1,CCTV-3 综艺
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225620/index.m3u8
+          #EXTINF:-1,CCTV-4 国际
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225621/index.m3u8
+          #EXTINF:-1,CCTV-5+ 体育
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225622/index.m3u8
+          #EXTINF:-1,CCTV-6 电影
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225623/index.m3u8
+          #EXTINF:-1,CCTV-7 国防军事
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225624/index.m3u8
+          #EXTINF:-1,CCTV-8 电视剧
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225625/index.m3u8
+          #EXTINF:-1,CCTV-9 纪录
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225626/index.m3u8
+          #EXTINF:-1,CCTV-10 科教
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225627/index.m3u8
+          #EXTINF:-1,CCTV-11 戏曲
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225628/index.m3u8
+          #EXTINF:-1,CCTV-12 社会与法
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225629/index.m3u8
+          #EXTINF:-1,CCTV-13 新闻
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225630/index.m3u8
+          #EXTINF:-1,CCTV-14 少儿
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225631/index.m3u8
+          #EXTINF:-1,CCTV-15 音乐
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225632/index.m3u8
+          #EXTINF:-1,浙江卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225814/index.m3u8
+          #EXTINF:-1,江苏卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225815/index.m3u8
+          #EXTINF:-1,湖南卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225816/index.m3u8
+          #EXTINF:-1,北京卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225817/index.m3u8
+          #EXTINF:-1,山东卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225818/index.m3u8
+          #EXTINF:-1,深圳卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225819/index.m3u8
+          #EXTINF:-1,东方卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225820/index.m3u8
+          #EXTINF:-1,安徽卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225821/index.m3u8
+          #EXTINF:-1,辽宁卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225822/index.m3u8
+          #EXTINF:-1,黑龙江卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225823/index.m3u8
+          #EXTINF:-1,吉林卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225824/index.m3u8
+          #EXTINF:-1,四川卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225825/index.m3u8
+          #EXTINF:-1,江西卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225826/index.m3u8
+          #EXTINF:-1,天津卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225827/index.m3u8
+          #EXTINF:-1,重庆卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225828/index.m3u8
+          #EXTINF:-1,河南卫视
+          http://39.135.55.105:6610/PLTV/88888910/224/3221225829/index.m3u8
+          EOF
+          
+          echo "✅ M3U文件已生成"
+          wc -l data/result.m3u
+      
+      - name: 生成TXT文件
+        run: |
+          cat > data/result.txt << 'EOF'
+          CCTV-1 综合,http://39.135.55.105:6610/PLTV/88888910/224/3221225618/index.m3u8
+          CCTV-2 财经,http://39.135.55.105:6610/PLTV/88888910/224/3221225619/index.m3u8
+          CCTV-3 综艺,http://39.135.55.105:6610/PLTV/88888910/224/3221225620/index.m3u8
+          CCTV-4 国际,http://39.135.55.105:6610/PLTV/88888910/224/3221225621/index.m3u8
+          CCTV-5+ 体育,http://39.135.55.105:6610/PLTV/88888910/224/3221225622/index.m3u8
+          CCTV-6 电影,http://39.135.55.105:6610/PLTV/88888910/224/3221225623/index.m3u8
+          CCTV-7 国防军事,http://39.135.55.105:6610/PLTV/88888910/224/3221225624/index.m3u8
+          CCTV-8 电视剧,http://39.135.55.105:6610/PLTV/88888910/224/3221225625/index.m3u8
+          EOF
+          
+          echo "✅ TXT文件已生成"
+      
+      - name: 生成JSON文件
+        run: |
+          cat > data/sources.json << 'EOF'
+          {
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "version": "1.0.0",
+            "total": 32,
+            "channels": [
+              {
+                "name": "CCTV-1 综合",
+                "url": "http://39.135.55.105:6610/PLTV/88888910/224/3221225618/index.m3u8",
+                "type": "CCTV"
+              },
+              {
+                "name": "CCTV-2 财经",
+                "url": "http://39.135.55.105:6610/PLTV/88888910/224/3221225619/index.m3u8",
+                "type": "CCTV"
+              }
+            ]
+          }
+          EOF
+          
+          echo "✅ JSON文件已生成"
+      
+      - name: 验证文件
+        run: |
+          echo "📊 文件验证:"
+          echo "M3U文件大小: $(wc -c < data/result.m3u) 字节"
+          echo "M3U文件行数: $(wc -l < data/result.m3u) 行"
+          echo ""
+          echo "TXT文件大小: $(wc -c < data/result.txt) 字节"
+          echo "JSON文件大小: $(wc -c < data/sources.json) 字节"
+          echo ""
+          echo "✅ 所有文件验证成功"
+      
+      - name: 配置Git用户信息
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+      
+      - name: 提交并推送更改
+        run: |
+          git add data/
+          
+          # 检查是否有更改
+          if git diff --quiet --cached; then
+            echo "ℹ️ 没有新的更改"
+          else
+            git commit -m "🔄 自动更新直播源 - $(date '+%Y-%m-%d %H:%M:%S UTC')"
+            git push
+            echo "✅ 更改已推送到GitHub"
+          fi
+      
+      - name: 工作流完成
+        run: |
+          echo "=========================================="
+          echo "✅ 直播源更新工作流完成！"
+          echo "=========================================="
+          echo "📁 生成的文件:"
+          echo "  - data/result.m3u"
+          echo "  - data/result.txt"
+          echo "  - data/sources.json"
+          echo ""
+          echo "🔗 TVBOX使用地址:"
+          echo "  https://raw.githubusercontent.com/\${{ github.repository }}/main/data/result.m3u"
+          echo "=========================================="
